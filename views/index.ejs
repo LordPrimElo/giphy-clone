@@ -1,3 +1,7 @@
 <%- include("partials/header") %> 
-
+    <% gifs.forEach((gif) => { %>
+        <div class="card bg-dark text-white">
+            <img src="<%= gif.gif_link %>" class="card-img" alt="A gif">
+        </div>
+    <% }) %> 
 <%- include("partials/footer") %> 
