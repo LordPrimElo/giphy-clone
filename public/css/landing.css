@@ -1,0 +1,19 @@
+.landing_page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.landing_page-card-img {
+    width: 100%;
+    min-height: 20rem;
+	max-height: 100%;
+    min-width: 20rem;
+	object-fit: cover;
+	border-radius: 1rem;
+}
+
+.landing_page-card {
+    margin: 2.5%;
+}
