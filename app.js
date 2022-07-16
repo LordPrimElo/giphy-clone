@@ -1,22 +1,31 @@
 const express = require("express")
 const app = express()
+const giphy = require("giphy-api")
+const Giphy = giphy()
+const config = require("./config")
+const fetch = require("node-fetch")
+const bodyParser = require("body-parser")
+
+const apiConnection = `https://api.giphy.com/v1/gifs/search?api_key=${config.apiKey}`
+
+const apiIndexConnection = `https://api.giphy.com/v1/gifs/trending?api_key=${config.apiKey}&limit=50&weirdness=4&offset=${50}`
 
 app.set("view engine", "ejs")
 app.use(express.static("public"))
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 
-const gifs = [
-    {
-        gif_link: "https://media1.giphy.com/media/2D8g2rXcWx1DO/200w.webp?cid=ecf05e47bep5nyxsj7nmzxgivvkco5xhdytdgxxgy1wxmsnr&rid=200w.webp&ct=g"
-    },
-    {
-        gif_link: "https://media3.giphy.com/media/7kn27lnYSAE9O/200.webp?cid=ecf05e47bep5nyxsj7nmzxgivvkco5xhdytdgxxgy1wxmsnr&rid=200.webp&ct=g"
-    }
-]
-
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+    const gifs = await fetch(apiIndexConnection).then(res => res.json())
     res.render("index", {gifs})
 })
 
-app.listen(3000, () => {
+app.post("/", async (req, res) => {
+    const gifs = await fetch(`${apiConnection}&q=${req.body.search}&limit=25`).then(res => res.json())
+    res.render("index", {gifs})
+})
+
+
+app.listen(3000, async () => {
     console.log("Giphy clone listening on port 3000")
 })
