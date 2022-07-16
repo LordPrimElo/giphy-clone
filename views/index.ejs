@@ -1,8 +1,8 @@
 <%- include("partials/header") %>
     <div class="landing_page-container container">
-        <% gifs.forEach((gif) => { %>
+        <% gifs.data.forEach((gif) => { %>
         <div class="card bg-dark text-white landing_page-card">
-            <img src="<%= gif.gif_link %>" class="card-img landing_page-card-img" alt="A gif">
+            <img src="<%= gif.images.original.url %>" class="card-img landing_page-card-img" alt="A gif">
         </div>
     <% }) %> 
     </div>
