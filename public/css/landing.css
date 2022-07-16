@@ -1,6 +1,6 @@
 .landing_page-container {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     flex-wrap: wrap;
 }
