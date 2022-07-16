@@ -2,7 +2,7 @@
     <div class="landing_page-container container">
         <% gifs.data.forEach((gif) => { %>
         <div class="card bg-dark text-white landing_page-card">
-            <a href="<%= gif.url %>"><img src="<%= gif.images.original.url %>" class="card-img landing_page-card-img" alt="<%=-  %> "></a>
+            <a href="<%= gif.url %>"><img src="<%= gif.images.original.url %>" class="card-img landing_page-card-img" alt="<%= gif.title  %> "></a>
         </div>
     <% }) %> 
     </div>
